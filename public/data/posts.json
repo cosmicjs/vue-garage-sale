@@ -1,0 +1,345 @@
+[
+    {
+        "id": "123456",
+        "title": "Small end table",
+        "description": "Black metal framed brown wooden top table",
+        "condition": "Used",
+        "price": 15.00,
+        "isFree": false,
+        "categories": ["Home"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": "32828"
+        },
+        "images": ["bed-bedroom-comfort-545046.jpg", "apartment-architecture-chair-269252.jpg", "bottles-ceramics-close-up-842950.jpg", "chairs-contemporary-design-271696.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "johnmiller@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "VNDS Jordan Toro 4s size 9.5",
+        "description": "Hardly ever worn",
+        "condition": "Used",
+        "price": 255.00,
+        "isFree": false,
+        "categories": ["Fashion"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": "32828"
+        },
+        "images": ["adidas-yeezy-color-fashion-1280064.jpg", "athlete-feet-foot-1275690.jpg", "autumn-beautiful-color-1070360.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "ericrios@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "BMW OEM rims and tires",
+        "description": "These came off a 2014 BMW 750i xdrive. Tires are about 50% tread normal wear clean rim 19 inch.",
+        "condition": "Used",
+        "price": 850.00,
+        "isFree": false,
+        "categories": ["Motors"],
+        "location": {
+            "city": "Longwood",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["automobile-automotive-car-244553.jpg", "automobile-automotive-car-195635.jpg", "car-close-up-mercedes-benz-111766.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "ricardoridaso@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Kids toys lot with batteries",
+        "description": "7 toys included, they have batteries and works! cash only, pickup address below...",
+        "condition": "Used",
+        "price": 50.00,
+        "isFree": false,
+        "categories": ["Child"],
+        "location": {
+            "city": "Winter Park",
+            "state": "FL",
+            "postalCode": "32707"
+        },
+        "images": ["action-figures-art-boy-163036.jpg", "animals-bear-chicken-59720.jpg", "automobile-box-collection-163696.jpg", "hobby-leisure-model-cars-33074.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "alexzeeber@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Blue leather couch",
+        "description": "Great Ashley furniture full-size couch. Gently used, very comfortable. Color is beautiful teal, it give off a great beach themed vibe.",
+        "condition": "Used",
+        "price": 250.00,
+        "isFree": false,
+        "categories": ["Home"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["apartment-condo-condominium-275484.jpg", "apartment-architecture-carpet-276583.jpg", "apartment-couch-cozy-198272.jpg", "blanket-close-up-comfort-1248583.jpg", "brown-button-comfortable-404155.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "meghansiller@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Honda motorcycle CR85R",
+        "description": "Doesn't run carb cleaned and some new grips kept indoors",
+        "condition": "Used",
+        "price": 1400.00,
+        "isFree": false,
+        "categories": ["Motors"],
+        "location": {
+            "city": "Apoka",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["bike-machine-motorbike-595809.jpg", "bike-engine-machine-595808.jpg", "bmw-brand-luxury-104842.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "austinpower@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Apple watch series 3 gps",
+        "description": "Apple watch has minor scratches that dosn't affect the wath at all.",
+        "condition": "Used",
+        "price": 300.00,
+        "isFree": false,
+        "categories": ["Tech"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["apple-apple-watch-equipment-277406.jpg", "apple-apple-watch-gadget-267391.jpg", "digital-hand-smartwatch-110471.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "austinpower@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Universal island of adventure",
+        "description": "2 tickets for U.E any time. Expires 2019",
+        "condition": "Used",
+        "price": 125.00,
+        "isFree": false,
+        "categories": ["Entertainment"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["action-adrenaline-carnies-40547.jpg", "adrenaline-amusement-carnival-66143.jpg", "amusement-park-art-bright-137032.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "angelgreen@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "1963 Chevy Monza",
+        "description": "Mint condition everything original no tears no dents. Milage 65k",
+        "condition": "Used",
+        "price": 6500.00,
+        "isFree": false,
+        "categories": ["Cars"],
+        "location": {
+            "city": "Saint Cloud",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["auto-show-automobiles-automotives-248687.jpg", "automobile-automotive-car-73809.jpg", "american-car-asphalt-auto-462348.jpg"],
+        "mainImage": 0,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "chapwilliams@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Large home chair",
+        "description": "Black metal framed brown wooden top table",
+        "condition": "Used",
+        "price": 125.00,
+        "isFree": false,
+        "categories": ["Home"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": "32828"
+        },
+        "images": ["bed-bedroom-comfort-545046.jpg", "apartment-architecture-chair-269252.jpg", "bottles-ceramics-close-up-842950.jpg", "chairs-contemporary-design-271696.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "johnmiller@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Nike men's sneaker (runnig shoes)",
+        "description": "Hardly ever worn",
+        "condition": "Used",
+        "price": 94.00,
+        "isFree": false,
+        "categories": ["Fashion"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": "32828"
+        },
+        "images": ["adidas-yeezy-color-fashion-1280064.jpg", "athlete-feet-foot-1275690.jpg", "autumn-beautiful-color-1070360.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "ericrios@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Mercedes V-500 XL new tires (Set of 2)",
+        "description": "These came off a 2014 BMW 750i xdrive. Tires are about 50% tread normal wear clean rim 19 inch.",
+        "condition": "Used",
+        "price": 735.00,
+        "isFree": false,
+        "categories": ["Motors"],
+        "location": {
+            "city": "Longwood",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["automobile-automotive-car-244553.jpg", "automobile-automotive-car-195635.jpg", "car-close-up-mercedes-benz-111766.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "ricardoridaso@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Baby joy toy for toddlers",
+        "description": "7 toys included, they have batteries and works! cash only, pickup address below...",
+        "condition": "Used",
+        "price": 65.00,
+        "isFree": false,
+        "categories": ["Child"],
+        "location": {
+            "city": "Winter Park",
+            "state": "FL",
+            "postalCode": "32707"
+        },
+        "images": ["action-figures-art-boy-163036.jpg", "animals-bear-chicken-59720.jpg", "automobile-box-collection-163696.jpg", "hobby-leisure-model-cars-33074.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "alexzeeber@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Living room like new sectional sofa",
+        "description": "Great Ashley furniture full-size couch. Gently used, very comfortable. Color is beautiful teal, it give off a great beach themed vibe.",
+        "condition": "Used",
+        "price": 199.00,
+        "isFree": false,
+        "categories": ["Home"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["apartment-condo-condominium-275484.jpg", "apartment-architecture-carpet-276583.jpg", "apartment-couch-cozy-198272.jpg", "blanket-close-up-comfort-1248583.jpg", "brown-button-comfortable-404155.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "meghansiller@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Dirt bike for sports and thrill riding",
+        "description": "Doesn't run carb cleaned and some new grips kept indoors",
+        "condition": "Used",
+        "price": 950.00,
+        "isFree": false,
+        "categories": ["Motors"],
+        "location": {
+            "city": "Apoka",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["bike-machine-motorbike-595809.jpg", "bike-engine-machine-595808.jpg", "bmw-brand-luxury-104842.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "austinpower@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Smart digital watch with phone connection",
+        "description": "Apple watch has minor scratches that dosn't affect the wath at all.",
+        "condition": "Used",
+        "price": 165.00,
+        "isFree": false,
+        "categories": ["Tech"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["apple-apple-watch-equipment-277406.jpg", "apple-apple-watch-gadget-267391.jpg", "digital-hand-smartwatch-110471.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "austinpower@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "Theme park ticket for any Orlando park",
+        "description": "2 tickets for U.E any time. Expires 2019",
+        "condition": "Used",
+        "price": 99.00,
+        "isFree": false,
+        "categories": ["Entertainment"],
+        "location": {
+            "city": "Orlando",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["action-adrenaline-carnies-40547.jpg", "adrenaline-amusement-carnival-66143.jpg", "amusement-park-art-bright-137032.jpg"],
+        "mainImage": 1,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "angelgreen@gmail.com"}
+    },
+    {
+        "id": "123456",
+        "title": "American vitage car good for collectors",
+        "description": "Mint condition everything original no tears no dents. Milage 65k",
+        "condition": "Used",
+        "price": 9200.00,
+        "isFree": false,
+        "categories": ["Cars"],
+        "location": {
+            "city": "Saint Cloud",
+            "state": "FL",
+            "postalCode": ""
+        },
+        "images": ["auto-show-automobiles-automotives-248687.jpg", "automobile-automotive-car-73809.jpg", "american-car-asphalt-auto-462348.jpg"],
+        "mainImage": 2,
+        "isSold": false,
+        "dateAdded": "2018-06-22 15:46:00",
+        "user": {"email": "chapwilliams@gmail.com"}
+    }
+]
+
