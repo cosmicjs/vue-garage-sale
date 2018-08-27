@@ -5,12 +5,6 @@ import VueResource from 'vue-resource'
 import ApolloClient from 'apollo-boost'
 import gql from 'graphql-tag'
 
-// const client = new GraphQLClient('http://localhost:4000/graphql', {
-//     headers: {
-//         // auth params here....
-//     }
-// })
-
 const client = new ApolloClient({
     uri: 'https://localhost:4000/graphql'
 })
@@ -132,43 +126,6 @@ export default new Vuex.Store({
             dispatch('fetchPosts', payload)
             commit('SET_USER_LOCATION', {city: 'Orlando', state: 'FL', postalCode: '32821'})
         },
-        // fetchPostsSimple ({commit}, payload) {
-        //     // fetch graphql data using graphql-request lib
-        //     const variables = {term: (payload && payload.term) ? payload.term : ''}
-        //     const query = `query SearchPosts($term: String!){
-        //         searchPosts(term: $term){
-        //             id
-        //             title
-        //             description
-        //             condition
-        //             price
-        //             isFree
-        //             categories
-        //             location {
-        //                 city
-        //                 state
-        //                 postalCode
-        //             }
-        //             images
-        //             mainImage
-        //             isSold
-        //             dateAdded
-        //             user {
-        //                 email
-        //                 firstName
-        //                 lastName
-        //             }
-        //         }
-        //     }`
-        //     client.request(query, variables)
-        //         .then(data => {
-        //             commit('SET_POSTS', data.searchPosts)
-        //         })
-        //         .catch(error => {
-        //             // eslint-disable-next-line
-        //             console.log(error)
-        //         })
-        // },
         fetchPosts ({commit}, payload) {
             client
                 .query({
