@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid grid-list-md :class="{'pa-0': $vuetify.breakpoint.smAndDown}">
+    <v-container fluid grid-list-md :class="{'py-0 px-1': $vuetify.breakpoint.smAndDown}">
         <v-layout row wrap>
             <v-flex xs4
                 v-for="(post, index) in posts"

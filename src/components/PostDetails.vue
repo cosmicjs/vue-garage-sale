@@ -17,8 +17,8 @@
                     next-icon="keyboard_arrow_down"
                     prev-icon="keyboard_arrow_up"
                     lazy
-                    xkey="$route.fullPath"
                     v-show="isContainerVisible"
+                    :value="carouselImageIndex"
                     class="post-item-carousel">
                     <div class="v-post-controls post-details white--text">
                         <v-btn round outline color="white"
@@ -113,7 +113,7 @@
                         <span><v-icon color="white">location_on</v-icon></span>
                         <span>{{ postLocation }}</span>
                         <div class="post-map">
-                            <img src="img/misc/map_preview.png">
+                            <img src="/img/misc/map_preview.png">
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,8 @@ export default {
             enterAnimation: 'animated fadeInRight',
             leaveAnimation: 'animated fadeOutLeft',
             isContainerVisible: true,
-            dialog: false
+            dialog: false,
+            carouselImageIndex: 0
         }
     },
     computed: {
@@ -202,7 +203,13 @@ export default {
         // others
         // ==========================
         postImageUrl (image) {
-            return this.$store.getters.postImagesPath + image
+            const img = image.split('.')
+            const imgPath = this.$store.getters.postResponsiveImagesPath
+            if (this.$vuetify.breakpoint.smAndDown) {
+                return imgPath + img[0] + '-sm_1x.' + img[1]
+            } else {
+                return imgPath + img[0] + '-md_1x.' + img[1]
+            }
         },
         swipe (value) {
             if (this.isPostDetailsVisible && value === 'up') {
@@ -229,11 +236,13 @@ export default {
             this.enterAnimation = step > 0 ? 'animated fadeInRight' : 'animated fadeInLeft'
             this.leaveAnimation = step > 0 ? 'animated fadeOutLeft' : 'animated fadeOutRight'
             this.isContainerVisible = false
+            this.carouselImageIndex = 1
             setTimeout(() => {
                 this.$router.push({name: 'post', params: {postIndex: targetIndex}})
             }, 200)
             setTimeout(() => {
                 this.isContainerVisible = true
+                this.carouselImageIndex = 0
             }, 210)
         }
     }

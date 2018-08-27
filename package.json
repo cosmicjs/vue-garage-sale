@@ -7,13 +7,15 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "api": "nodemon server/index.js",
-    "prod": "serve -s dist"
+    "prod": "http-serve dist -p 5000 -g -c0 -S -C cert.pem -K key.pem",
+    "proxy": "; node server/httpProxy.js"
   },
   "dependencies": {
+    "apollo-boost": "^0.1.14",
     "apollo-server-express": "^2.0.3",
     "cors": "^2.8.4",
     "graphql": "^0.13.2",
-    "graphql-request": "^1.8.2",
+    "mongoose": "^5.2.9",
     "nodemon": "^1.18.3",
     "register-service-worker": "^1.0.0",
     "serve": "^9.6.0",
@@ -31,6 +33,7 @@
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/eslint-config-standard": "^3.0.0-rc.10",
     "babel-plugin-transform-imports": "^1.4.1",
+    "compression-webpack-plugin": "^1.1.11",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue-cli-plugin-vuetify": "^0.1.6",

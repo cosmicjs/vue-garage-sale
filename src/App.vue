@@ -1,8 +1,6 @@
 <template>
     <v-app id="app">
-        <!-- <transition appear xmode="out-in" name="router-transition" enter-active-class="animated fadeInDown" leave-active-class="animated fadeInDown"> -->
         <router-view></router-view>
-        <!-- </transition> -->
     </v-app>
 </template>
 <script>

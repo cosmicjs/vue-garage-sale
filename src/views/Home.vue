@@ -33,14 +33,16 @@
             <v-layout>
                 <v-flex xs2>
                     <v-toolbar-title xstyle="width: 300px" class="xml-0 xpl-0 text-xs-left">
-                        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+                        <v-toolbar-side-icon @click.stop="drawer = !drawer" aria-label="Toolbar Drawer" role="button"></v-toolbar-side-icon>
                         <span class="hidden-sm-and-down">Garage-Sale</span>
                     </v-toolbar-title>
                 </v-flex>
                 <v-flex xs10>
                     <v-text-field
                         flat
-                        solo-inverted
+                        solo
+                        light
+                        xcolor="white--text"
                         hide-details
                         label="Find in Garage-Sale..."
                         v-model="searchTerm"
@@ -57,9 +59,6 @@
         <v-content>
             <v-container fluid xfill-height :class="{'pa-0': $vuetify.breakpoint.smAndDown}">
                 <v-layout row wrap>
-                    <!-- <v-flex xs12 class="text-xs-left">
-                        <h5>User location: {{ userLocationDesc }}</h5>
-                    </v-flex> -->
                     <v-flex xs12>
                         <post-grid :posts="posts"></post-grid>
                     </v-flex>
@@ -155,3 +154,8 @@ export default {
     }
 }
 </script>
+<style>
+/*nav.v-toolbar.v-toolbar--fixed {
+    width: 100vw;
+}*/
+</style>
