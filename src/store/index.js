@@ -2,11 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 // import { GraphQLClient } from 'graphql-request'
-import ApolloClient from 'apollo-boost'
+import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost'
 import gql from 'graphql-tag'
+import Cosmic from '../api/cosmic'
 
 const client = new ApolloClient({
-    uri: 'https://localhost:4000/graphql'
+    // uri: 'https://graphql.cosmicjs.com/v1'
+    link: new HttpLink({uri: 'https://graphql.cosmicjs.com/v1'}),
+    cache: new InMemoryCache()
 })
 
 Vue.use(Vuex)
@@ -14,6 +17,7 @@ Vue.use(VueResource)
 
 export default new Vuex.Store({
     state: {
+        isDataReady: false,
         localDataUrl: process.env.BASE_URL + 'data/',
         postImagesPath: process.env.BASE_URL + 'img/posts/',
         postResponsiveImagesPath: process.env.BASE_URL + 'img/responsive/posts/',
@@ -55,6 +59,9 @@ export default new Vuex.Store({
         },
         postResponsiveImagesPath (state) {
             return state.postResponsiveImagesPath
+        },
+        isDataReady (state) {
+            return state.isDataReady
         }
     },
     mutations: {
@@ -78,6 +85,9 @@ export default new Vuex.Store({
         },
         SET_SEARCH_TERM (state, value) {
             state.searchTerm = value
+        },
+        SET_IS_DATA_READY (state, value) {
+            state.isDataReady = value
         }
     },
     actions: {
@@ -126,7 +136,7 @@ export default new Vuex.Store({
             dispatch('fetchPosts', payload)
             commit('SET_USER_LOCATION', {city: 'Orlando', state: 'FL', postalCode: '32821'})
         },
-        fetchPosts ({commit}, payload) {
+        fetchPostsFromMongo ({commit}, payload) {
             client
                 .query({
                     query: gql`query SearchPosts($term: String!) {
@@ -163,6 +173,48 @@ export default new Vuex.Store({
                 .catch(error => {
                     // eslint-disable-next-line
                     console.log(error)
+                })
+        },
+        fetchPosts ({commit, state}, payload) {
+            if (state.isDataReady) {
+                commit('SET_IS_DATA_READY', false)
+            }
+            console.time('graphql')
+            client
+                .query({
+                    query: gql`query Posts($bucket: String, $type: String!) {
+                            objectsByType(bucket_slug: $bucket, type_slug: $type) {
+                                _id
+                                title
+                                slug
+                                metadata
+                            }
+
+                        }`,
+                    variables: {bucket: 'garage-sale', type: 'posts'}
+                })
+                .then(data => {
+                    console.timeEnd('graphql')
+                    commit('SET_POSTS', data.data.objectsByType)
+                    commit('SET_IS_DATA_READY', true)
+                })
+                .catch(error => {
+                    // eslint-disable-next-line
+                    console.log(error)
+                })
+        },
+        testFetch ({commit}, payload) {
+            console.time('testFetch')
+            const params = {
+                type_slug: 'posts'
+            }
+            Cosmic.getObjectsByType(params)
+                .then(data => {
+                    console.timeEnd('testFetch')
+                    console.log('---- data: ', data.objects.length)
+                })
+                .catch(err => {
+                    console.log(err)
                 })
         }
     }

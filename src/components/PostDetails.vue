@@ -51,10 +51,10 @@
                         </v-flex>
                         <v-flex text-xs-left class="pl-2" @click="onPostInfoClick">
                             <div class="post-title title">
-                                {{ postData.title }}
+                                {{ postData.metadata.title }}
                             </div>
                             <div class="post-price headline">
-                                {{ '$' + postData.price.toFixed(0) }}
+                                {{ '$' + postData.metadata.price.toFixed(0) }}
                             </div>
                         </v-flex>
                         </v-layout>
@@ -79,7 +79,7 @@
                         </v-btn>
                     </div>
                     <v-carousel-item
-                        v-for="(item, i) in postData.images"
+                        v-for="(item, i) in postImages"
                         :key="i"
                         reverse-transition="slide-y-reverse-transition"
                         transition="slide-y-transition"
@@ -100,13 +100,13 @@
                         <v-icon medium color="white">close</v-icon>
                     </div>
                     <div class="post-title title">
-                        {{ postData.title }}
+                        {{ postData.metadata.title }}
                     </div>
                     <div class="post-price headline">
-                        {{ '$' + postData.price.toFixed(0) }}
+                        {{ '$' + postData.metadata.price.toFixed(0) }}
                     </div>
                     <div class="post-desc body1">
-                        {{ postData.description }}
+                        {{ postData.metadata.description }}
                     </div>
                     <br>
                     <div class="post-location body2">
@@ -158,8 +158,23 @@ export default {
         postsCount () {
             return this.$store.getters.posts.length
         },
+        // postLocation () {
+        //     return this.postData.location.city + ', ' + this.postData.location.state + ' ' + this.postData.location.postalCode
+        // }
         postLocation () {
-            return this.postData.location.city + ', ' + this.postData.location.state + ' ' + this.postData.location.postalCode
+            const loc = this.postData.metadata.location.metafields
+            const city = loc.find((item) => item.key === 'city').value
+            const state = loc.find((item) => item.key === 'state').value
+            const postalCode = loc.find((item) => item.key === 'postalcode').value
+            return city + ', ' + state + ' ' + postalCode
+        },
+        postImages () {
+            const imgSize = this.$vuetify.breakpoint.smAndDown ? '-xm_1x' : '-sm_1x'
+            return this.postData.metadata.images.filter((element) => {
+                return element[Object.keys(element)[0]].imgix_url.includes(imgSize)
+            }).map((item) => {
+                return item[Object.keys(item)[0]]
+            })
         }
     },
     components: {
@@ -202,14 +217,17 @@ export default {
         // ==========================
         // others
         // ==========================
+        // postImageUrl (image) {
+        //     const img = image.split('.')
+        //     const imgPath = this.$store.getters.postResponsiveImagesPath
+        //     if (this.$vuetify.breakpoint.smAndDown) {
+        //         return imgPath + img[0] + '-sm_1x.' + img[1]
+        //     } else {
+        //         return imgPath + img[0] + '-md_1x.' + img[1]
+        //     }
+        // },
         postImageUrl (image) {
-            const img = image.split('.')
-            const imgPath = this.$store.getters.postResponsiveImagesPath
-            if (this.$vuetify.breakpoint.smAndDown) {
-                return imgPath + img[0] + '-sm_1x.' + img[1]
-            } else {
-                return imgPath + img[0] + '-md_1x.' + img[1]
-            }
+            return image.imgix_url
         },
         swipe (value) {
             if (this.isPostDetailsVisible && value === 'up') {

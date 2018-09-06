@@ -14,6 +14,7 @@
     "apollo-boost": "^0.1.14",
     "apollo-server-express": "^2.0.3",
     "cors": "^2.8.4",
+    "cosmicjs": "^3.2.12",
     "graphql": "^0.13.2",
     "mongoose": "^5.2.9",
     "nodemon": "^1.18.3",
