@@ -1,16 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
-// import { GraphQLClient } from 'graphql-request'
-import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost'
-import gql from 'graphql-tag'
 import Cosmic from '../api/cosmic'
-
-const client = new ApolloClient({
-    // uri: 'https://graphql.cosmicjs.com/v1'
-    link: new HttpLink({uri: 'https://graphql.cosmicjs.com/v1'}),
-    cache: new InMemoryCache()
-})
 
 Vue.use(Vuex)
 Vue.use(VueResource)
@@ -18,9 +9,6 @@ Vue.use(VueResource)
 export default new Vuex.Store({
     state: {
         isDataReady: false,
-        localDataUrl: process.env.BASE_URL + 'data/',
-        postImagesPath: process.env.BASE_URL + 'img/posts/',
-        postResponsiveImagesPath: process.env.BASE_URL + 'img/responsive/posts/',
         posts: [],
         userLocation: null, // city where the user is located
         currentUser: null, // the current user credentials to be able to post
@@ -77,10 +65,13 @@ export default new Vuex.Store({
         SET_POSTS (state, value) {
             state.posts = value
         },
+        ADD_POSTS (state, value) {
+            state.posts.push(...value)
+        },
         SET_POST_CATEGORIES (state, value) {
             state.postCategories = value
         },
-        SET_PORT_CONDITIONS (state, value) {
+        SET_POST_CONDITIONS (state, value) {
             state.postConditions = value
         },
         SET_SEARCH_TERM (state, value) {
@@ -100,122 +91,67 @@ export default new Vuex.Store({
         updateUserLocation ({commit}, payload) {
             commit('SET_USER_LOCATION', payload)
         },
-        updatePosts ({commit, state}, payload) {
-            Vue.http.get(state.localDataUrl + 'posts.json')
-                .then(response => response.json())
+        fetchPostCategories ({commit, state}, payload) {
+            const params = {
+                type_slug: 'postcategories'
+            }
+            Cosmic.getObjectsByType(params)
                 .then(data => {
-                    if (data) {
-                        commit('SET_POSTS', data)
-                    }
+                    commit('SET_POST_CATEGORIES', data.objects)
+                })
+                .catch(error => {
+                    console.log(error)
                 })
         },
-        updatePostCategories ({commit, state}, payload) {
-            Vue.http.get(state.localDataUrl + 'postCategories.json')
-                .then(response => response.json())
+        fetchPostConditions ({commit, state}, payload) {
+            const params = {
+                type_slug: 'postconditions'
+            }
+            Cosmic.getObjectsByType(params)
                 .then(data => {
-                    if (data) {
-                        commit('SET_POST_CATEGORIES', data)
-                    }
+                    commit('SET_POST_CONDITIONS', data.objects)
                 })
-        },
-        updatePostConditions ({commit, state}, payload) {
-            Vue.http.get(state.localDataUrl + 'postConditions.json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data) {
-                        commit('SET_PORT_CONDITIONS', data)
-                    }
+                .catch(error => {
+                    console.log(error)
                 })
         },
         updateSearchTerm ({commit}, payload) {
             commit('SET_SEARCH_TERM', payload)
         },
         loadInitialData ({commit, dispatch}, payload) {
-            dispatch('updatePostConditions')
-            dispatch('updatePostCategories')
             dispatch('fetchPosts', payload)
+            dispatch('fetchPostConditions')
+            dispatch('fetchPostCategories')
             commit('SET_USER_LOCATION', {city: 'Orlando', state: 'FL', postalCode: '32821'})
         },
-        fetchPostsFromMongo ({commit}, payload) {
-            client
-                .query({
-                    query: gql`query SearchPosts($term: String!) {
-                            searchPosts(term: $term) {
-                                _id
-                                title
-                                description
-                                condition
-                                price
-                                isFree
-                                categories { name }
-                                location {
-                                    city
-                                    state
-                                    postalCode
-                                }
-                                images
-                                mainImage
-                                isSold
-                                dateAdded
-                                user {
-                                    email
-                                    firstName
-                                    lastName
-                                }
-                            }
+        async fetchPosts ({commit, state}, payload) {
+            const maxRecords = 36
+            let recordLimit = 3
+            let skipPos = 0
+            let fetchMore = true
 
-                        }`,
-                    variables: {term: (payload && payload.term) ? payload.term : ''}
-                })
-                .then(data => {
-                    commit('SET_POSTS', data.data.searchPosts)
-                })
-                .catch(error => {
-                    // eslint-disable-next-line
+            if (state.isDataReady) commit('SET_IS_DATA_READY', false)
+            // fetch cosmic data in small batches to prevent long wait time.
+            while (skipPos < maxRecords && fetchMore) {
+                try {
+                    const params = {
+                        type_slug: 'posts',
+                        limit: recordLimit,
+                        skip: skipPos
+                    }
+                    let res = await Cosmic.getObjectsByType(params)
+                    if (res.objects && res.objects.length) {
+                        commit('ADD_POSTS', res.objects)
+                        commit('SET_IS_DATA_READY', true)
+                    } else {
+                        fetchMore = false
+                    }
+                    skipPos += recordLimit
+                } catch (error) {
                     console.log(error)
-                })
-        },
-        fetchPosts ({commit, state}, payload) {
-            if (state.isDataReady) {
-                commit('SET_IS_DATA_READY', false)
+                    fetchMore = false
+                }
             }
-            console.time('graphql')
-            client
-                .query({
-                    query: gql`query Posts($bucket: String, $type: String!) {
-                            objectsByType(bucket_slug: $bucket, type_slug: $type) {
-                                _id
-                                title
-                                slug
-                                metadata
-                            }
-
-                        }`,
-                    variables: {bucket: 'garage-sale', type: 'posts'}
-                })
-                .then(data => {
-                    console.timeEnd('graphql')
-                    commit('SET_POSTS', data.data.objectsByType)
-                    commit('SET_IS_DATA_READY', true)
-                })
-                .catch(error => {
-                    // eslint-disable-next-line
-                    console.log(error)
-                })
-        },
-        testFetch ({commit}, payload) {
-            console.time('testFetch')
-            const params = {
-                type_slug: 'posts'
-            }
-            Cosmic.getObjectsByType(params)
-                .then(data => {
-                    console.timeEnd('testFetch')
-                    console.log('---- data: ', data.objects.length)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
         }
     }
 })
