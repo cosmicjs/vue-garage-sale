@@ -1,7 +1,7 @@
 <template>
     <v-container fluid grid-list-md :class="{'py-0 px-1': $vuetify.breakpoint.smAndDown}">
         <v-layout row wrap>
-            <v-flex v-if="!isDataReady"xs12>
+            <v-flex v-if="!isDataReady" xs12>
                 <img class="data-loading" src="img/misc/spinner.gif">
             </v-flex>
             <v-flex v-if="isDataReady" xs4
@@ -31,7 +31,5 @@ export default {
 <style>
 .data-loading {
     margin-top: 50px;
-    /*width: 100px;*/
-    /*height: 100px;*/
 }
 </style>

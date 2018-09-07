@@ -42,7 +42,6 @@
                         flat
                         solo
                         light
-                        xcolor="white--text"
                         hide-details
                         label="Find in Garage-Sale..."
                         v-model="searchTerm"
@@ -155,7 +154,5 @@ export default {
 }
 </script>
 <style>
-/*nav.v-toolbar.v-toolbar--fixed {
-    width: 100vw;
-}*/
+
 </style>

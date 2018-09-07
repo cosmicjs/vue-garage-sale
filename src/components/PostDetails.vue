@@ -158,9 +158,6 @@ export default {
         postsCount () {
             return this.$store.getters.posts.length
         },
-        // postLocation () {
-        //     return this.postData.location.city + ', ' + this.postData.location.state + ' ' + this.postData.location.postalCode
-        // }
         postLocation () {
             const loc = this.postData.metadata.location.metafields
             const city = loc.find((item) => item.key === 'city').value
@@ -217,15 +214,6 @@ export default {
         // ==========================
         // others
         // ==========================
-        // postImageUrl (image) {
-        //     const img = image.split('.')
-        //     const imgPath = this.$store.getters.postResponsiveImagesPath
-        //     if (this.$vuetify.breakpoint.smAndDown) {
-        //         return imgPath + img[0] + '-sm_1x.' + img[1]
-        //     } else {
-        //         return imgPath + img[0] + '-md_1x.' + img[1]
-        //     }
-        // },
         postImageUrl (image) {
             return image.imgix_url
         },
@@ -271,7 +259,6 @@ export default {
     height: 100%;
 }
 .v-carousel .v-jumbotron img {
-    /*width: auto;*/
     height: 100%;
     object-fit: cover;
     max-width: 100%;

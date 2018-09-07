@@ -130,16 +130,23 @@ export default new Vuex.Store({
             let skipPos = 0
             let fetchMore = true
 
+            if (state.posts.length) {
+                commit('SET_POSTS', [])
+            }
             if (state.isDataReady) commit('SET_IS_DATA_READY', false)
             // fetch cosmic data in small batches to prevent long wait time.
             while (skipPos < maxRecords && fetchMore) {
                 try {
                     const params = {
-                        type_slug: 'posts',
+                        type: 'posts',
                         limit: recordLimit,
                         skip: skipPos
                     }
-                    let res = await Cosmic.getObjectsByType(params)
+                    if (payload.term) {
+                        params.metafield_key = 'title'
+                        params.metafield_value = payload.term
+                    }
+                    let res = await Cosmic.getObjects(params)
                     if (res.objects && res.objects.length) {
                         commit('ADD_POSTS', res.objects)
                         commit('SET_IS_DATA_READY', true)
