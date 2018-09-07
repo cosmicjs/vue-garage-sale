@@ -8,8 +8,7 @@
     "lint": "vue-cli-service lint",
     "api": "nodemon server/index.js",
     "prod": "http-serve dist -p 5000 -g -c0 -S -C cert.pem -K key.pem",
-    "start": "http-serve dist -p 5000 -g -c0 -S",
-    "start2": "node server.js",
+    "start": "node server.js",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
