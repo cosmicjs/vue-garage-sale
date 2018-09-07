@@ -17,8 +17,6 @@ Tutorial article
 * GraphQL
 * Apollo client
 * Apollo server
-* Mongoose
-* MongoDB
 
 
 # Project setup
@@ -50,4 +48,5 @@ npm run lint
 ```
 
 ![Garage Sale Detail View on Nexus 5](https://user-images.githubusercontent.com/8376035/45199781-83de5200-b23b-11e8-9f52-7cb17d06bb70.png)
+Garage Sale detail view on Nexus 5.
 
