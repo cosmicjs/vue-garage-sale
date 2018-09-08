@@ -49,7 +49,8 @@
                         :prepend-icon="searchBackIcon"
                         @click:append="onSearchTextChange"
                         @click:prepend="onClearSearchResultsClick"
-                        @input="onSearchTextInput">
+                        @input="onSearchTextInput"
+                        @keyup.enter="onSearchTextEnter">
                     </v-text-field>
                 </v-flex>
             </v-layout>
@@ -114,16 +115,7 @@ export default {
             console.log('Clicked me!')
         },
         onSearchTextChange () {
-            if (this.searchInputIcon === 'search') {
-                if (this.searchTerm.length) {
-                    this.$store.dispatch('fetchPosts', {term: this.searchTerm})
-                    this.searchInputIcon = 'clear'
-                    this.isFilterOn = true
-                    this.$store.dispatch('updateSearchTerm', this.searchTerm)
-                }
-            } else {
-                this.clearSearchTextField()
-            }
+            this.searchPosts()
         },
         onSearchTextInput () {
             if (this.searchInputIcon === 'clear') {
@@ -136,12 +128,27 @@ export default {
             this.isFilterOn = false
             this.$store.dispatch('updateSearchTerm', this.searchTerm)
         },
+        onSearchTextEnter () {
+            this.searchPosts()
+        },
         // ======================================
         // other
         // ======================================
         clearSearchTextField () {
             this.searchTerm = ''
             this.searchInputIcon = 'search'
+        },
+        searchPosts () {
+            if (this.searchInputIcon === 'search') {
+                if (this.searchTerm.length) {
+                    this.$store.dispatch('fetchPosts', {term: this.searchTerm})
+                    this.searchInputIcon = 'clear'
+                    this.isFilterOn = true
+                    this.$store.dispatch('updateSearchTerm', this.searchTerm)
+                }
+            } else {
+                this.clearSearchTextField()
+            }
         }
     },
     created () {

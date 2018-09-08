@@ -6,6 +6,8 @@
 
 
 ## Intro
+This application was mainly inspired by craigslist.com, offerup, and letgo apps. All of these apps are basicaly are online ads or marketplace to allow people to sell and buy used stuff online. The only defference is that the last two apps are mobile only, and the first one is web only. So I want to build a mobile app that can also be used on desktop. that works on any device and also feels very fast. So this is where PWA come in! PWA is new class of web app that emerged recently, and has trenmendous potential like offline browsing.........
+
 
 ## Application Overview
 

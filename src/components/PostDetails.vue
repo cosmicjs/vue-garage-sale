@@ -3,6 +3,7 @@
     <v-container fill-height fluid
         :class="{'pa-0': $vuetify.breakpoint.smAndDown}">
         <v-layout row wrap
+            class="no-overflow"
             v-touch="{
                 left: () => swipe('left'),
                 right: () => swipe('right')
@@ -369,5 +370,9 @@ export default {
 }
 .v-post__next {
     right: 15px;
+}
+.no-overflow {
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 </style>
