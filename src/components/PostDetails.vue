@@ -43,9 +43,6 @@
                         <div><v-icon medium color="white">favorite_border</v-icon></div>
                         <div>Save</div>
                     </div>
-                    <div class="v-post-controls white--text pos-center">
-                        {{ message }}
-                    </div>
                     <div class="v-post-controls post-desc white--text">
                         <v-layout row>
                         <v-flex>
@@ -153,8 +150,7 @@ export default {
             leaveAnimation: 'animated fadeOutLeft',
             isContainerVisible: true,
             dialog: false,
-            carouselImageIndex: 0,
-            message: 'My window height: '
+            carouselImageIndex: 0
         }
     },
     computed: {
@@ -266,7 +262,7 @@ export default {
     },
     mounted () {
         if (window.innerHeight !== innerHeight()) {
-            this.message = 'iOS-Inner-Height: ' + innerHeight() + ' | Window-Inner-Height: ' + window.innerHeight
+            // this.message = 'iOS-Inner-Height: ' + innerHeight() + ' | Window-Inner-Height: ' + window.innerHeight
             this.$el.style.height = window.innerHeight + 'px'
             this.$refs['post-carousel'].$el.style.height = window.innerHeight + 'px'
             this.$refs['post-details-section'].style.top = '-' + window.innerHeight + 'px'
