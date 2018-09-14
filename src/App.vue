@@ -10,7 +10,12 @@ export default {
 
 <style>
 body, html{
-    overflow-x: hidden;
+    /*overflow: auto;*/
+    /*overflow-x: hidden;*/
+    /*height: 100%;*/
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

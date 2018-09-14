@@ -6,11 +6,14 @@
             class="no-overflow"
             v-touch="{
                 left: () => swipe('left'),
-                right: () => swipe('right')
+                right: () => swipe('right'),
+                up: () => swipe('up'),
+                down: () => swipe('down')
             }">
             <v-flex xs12 sm6 offset-sm3>
                 <transition appear mode="out-in" :enter-active-class="enterAnimation" :leave-active-class="leaveAnimation">
                 <post-carousel
+                    ref="post-carousel"
                     :cycle="false"
                     :hide-controls="$vuetify.breakpoint.smAndDown"
                     :class="{'view-medium-and-up': $vuetify.breakpoint.mdAndUp}"
@@ -39,6 +42,9 @@
                         @click="onSaveButtonClick">
                         <div><v-icon medium color="white">favorite_border</v-icon></div>
                         <div>Save</div>
+                    </div>
+                    <div class="v-post-controls white--text pos-center">
+                        {{ message }}
                     </div>
                     <div class="v-post-controls post-desc white--text">
                         <v-layout row>
@@ -91,11 +97,7 @@
                 </transition>
                 <transition appear mode="out-in" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
                 <div class="v-carousel v-post-controls post-details-section white--text"
-                    v-show="isPostDetailsVisible"
-                    v-touch="{
-                        up: () => swipe('up'),
-                        down: () => swipe('down')
-                    }">
+                    v-show="isPostDetailsVisible">
                     <div class="v-post-controls btn-close white--text caption"
                         @click="onCloseDetailsButtonClick">
                         <v-icon medium color="white">close</v-icon>
@@ -139,6 +141,7 @@
 </template>
 <script>
 import PostCarousel from './PostCarousel'
+import innerHeight from 'ios-inner-height'
 
 export default {
     props: ['postIndex'],
@@ -149,7 +152,8 @@ export default {
             leaveAnimation: 'animated fadeOutLeft',
             isContainerVisible: true,
             dialog: false,
-            carouselImageIndex: 0
+            carouselImageIndex: 0,
+            message: 'My window height: '
         }
     },
     computed: {
@@ -224,6 +228,13 @@ export default {
                 return
             }
             if (this.isPostDetailsVisible) return
+
+            if (value === 'up' || value === 'down') {
+                setTimeout(() => {
+                    window.scrollTo(0, 0)
+                }, 300)
+            }
+
             if (value === 'left') this.nextPost()
             if (value === 'right') this.prevPost()
         },
@@ -251,6 +262,14 @@ export default {
                 this.isContainerVisible = true
                 this.carouselImageIndex = 0
             }, 210)
+        }
+    },
+    mounted () {
+        if (window.innerHeight !== innerHeight()) {
+            // this.$refs['post-carousel'].$el.style.height = window.innerHeight + 'px'
+            this.message = 'iOS-Inner-Height: ' + innerHeight() + ' | Window-Inner-Height: ' + window.innerHeight
+            this.$el.style.height = window.innerHeight + 'px'
+            this.$refs['post-carousel'].$el.style.height = window.innerHeight + 'px'
         }
     }
 }
@@ -331,10 +350,10 @@ export default {
 .v-post-controls.post-details button {
     filter: drop-shadow(.1em .1em .1em navy);
 }
-.v-carousel.post-details-section-container {
+/*.v-carousel.post-details-section-container {
     width: 100%;
     height: 100%;
-}
+}*/
 .v-post-controls.post-details-section {
     height: 100%;
     z-index: 2;
@@ -374,5 +393,11 @@ export default {
 .no-overflow {
     overflow-y: hidden;
     overflow-x: hidden;
+}
+.pos-center {
+    width: 100%;
+    text-align: center;
+    margin-top: 300px;
+    font-size: 20px
 }
 </style>

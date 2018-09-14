@@ -24,6 +24,7 @@
     "cosmicjs": "^3.2.12",
     "dotenv": "^6.0.0",
     "http-serve": "^1.0.1",
+    "ios-inner-height": "^1.1.0",
     "nodemon": "^1.18.3",
     "register-service-worker": "^1.0.0",
     "serve": "^9.6.0",
