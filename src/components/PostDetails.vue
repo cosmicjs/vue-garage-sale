@@ -87,7 +87,6 @@
                         :key="i"
                         reverse-transition="slide-y-reverse-transition"
                         transition="slide-y-transition"
-                        class="xanimated"
                         :src="postImageUrl(item)">
                     </v-carousel-item>
                 </post-carousel>
@@ -222,15 +221,9 @@ export default {
         swipe (value) {
             if (this.isPostDetailsVisible && value === 'up') {
                 this.isPostDetailsVisible = false
-                this.$vuetify.goTo(0)
                 return
             }
             if (this.isPostDetailsVisible) return
-
-            if (value === 'up' || value === 'down') {
-                this.$vuetify.goTo(0)
-            }
-
             if (value === 'left') this.nextPost()
             if (value === 'right') this.prevPost()
         },
@@ -262,12 +255,10 @@ export default {
     },
     mounted () {
         if (window.innerHeight !== innerHeight()) {
-            // this.message = 'iOS-Inner-Height: ' + innerHeight() + ' | Window-Inner-Height: ' + window.innerHeight
             this.$el.style.height = window.innerHeight + 'px'
             this.$refs['post-carousel'].$el.style.height = window.innerHeight + 'px'
             this.$refs['post-details-section'].style.top = '-' + window.innerHeight + 'px'
         }
-        this.$vuetify.goTo(0)
     }
 }
 </script>
@@ -391,10 +382,10 @@ export default {
     overflow-y: hidden;
     overflow-x: hidden;
 }
-.pos-center {
-    width: 100%;
-    text-align: center;
-    margin-top: 300px;
-    font-size: 20px
+#post-details {
+    position: fixed;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
 }
 </style>

@@ -10,9 +10,13 @@ export default {
 
 <style>
 body, html{
-    /*overflow-y: scroll;*/
-    /*-webkit-overflow-scrolling: touch;*/
-    /*scroll-behavior: smooth;*/
+    overflow: hidden;
+}
+.v-content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    height: 100vh;
 }
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
