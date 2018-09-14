@@ -97,6 +97,7 @@
                 </transition>
                 <transition appear mode="out-in" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
                 <div class="v-carousel v-post-controls post-details-section white--text"
+                    ref="post-details-section"
                     v-show="isPostDetailsVisible">
                     <div class="v-post-controls btn-close white--text caption"
                         @click="onCloseDetailsButtonClick">
@@ -225,14 +226,13 @@ export default {
         swipe (value) {
             if (this.isPostDetailsVisible && value === 'up') {
                 this.isPostDetailsVisible = false
+                this.$vuetify.goTo(0)
                 return
             }
             if (this.isPostDetailsVisible) return
 
             if (value === 'up' || value === 'down') {
-                setTimeout(() => {
-                    window.scrollTo(0, 0)
-                }, 300)
+                this.$vuetify.goTo(0)
             }
 
             if (value === 'left') this.nextPost()
@@ -266,11 +266,12 @@ export default {
     },
     mounted () {
         if (window.innerHeight !== innerHeight()) {
-            // this.$refs['post-carousel'].$el.style.height = window.innerHeight + 'px'
             this.message = 'iOS-Inner-Height: ' + innerHeight() + ' | Window-Inner-Height: ' + window.innerHeight
             this.$el.style.height = window.innerHeight + 'px'
             this.$refs['post-carousel'].$el.style.height = window.innerHeight + 'px'
+            this.$refs['post-details-section'].style.top = '-' + window.innerHeight + 'px'
         }
+        this.$vuetify.goTo(0)
     }
 }
 </script>
