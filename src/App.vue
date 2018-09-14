@@ -10,12 +10,9 @@ export default {
 
 <style>
 body, html{
-    /*overflow: auto;*/
-    /*overflow-x: hidden;*/
-    /*height: 100%;*/
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
+    /*overflow-y: scroll;*/
+    /*-webkit-overflow-scrolling: touch;*/
+    /*scroll-behavior: smooth;*/
 }
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -23,7 +20,6 @@ body, html{
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    overflow-x: hidden;
 }
 #nav {
     padding: 30px;
