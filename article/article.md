@@ -1,6 +1,6 @@
 
 # Create Progressive Web App with ease using Vue, Cosmic JS, and GraphQL
-<img src="./images/grid_view_Nexus.png" width="30%" alt="Main screen Nexus 5 Phone">
+<img src="./images/grid_view_Nexus.png" width="30%" alt="Main screen Nexus 5 Phone" style="display: block; margin-left: auto; margin-right: auto;">
 
 ## TL;DR
 
@@ -37,7 +37,7 @@ The application consist of mainly three major functions:
 * The ability to click an item image and show the item description, seller, more images, contact seller...
 * The ability to add new item. This feature I didn't build due to the scope of this project, but this can certainly add a valuable addition.
 
-<img src="./images/detail_view_Nexus.png" width="30%" alt="Post item detail view Nexus 5 Phone">
+<img src="./images/detail_view_Nexus.png" width="30%" alt="Post item detail view Nexus 5 Phone" style="display: block; margin-left: auto; margin-right: auto;">
 
 ## Starting your Vue PWA app
 
@@ -237,7 +237,7 @@ For my application I will include both Rest, and GraphQL methods to let you expe
 
 OK, let's jump in to Cosmic JS and add our data elements. aftrer you sign up for free account, open the dashboard and add new bucket called `garage-sale`.
 
-<img src="./images/cosmic_add_bucket.png" width="30%" alt="Cosmic JS - Add new bucket">
+<img src="./images/cosmic_add_bucket.png" width="50%" alt="Cosmic JS - Add new bucket" style="display: block; margin-left: auto; margin-right: auto;">
 
 After that open the dashboard for this bucket and from the left side menu, add the following `Object Type`:
 
@@ -249,7 +249,7 @@ After that open the dashboard for this bucket and from the left side menu, add t
 
 Object Type is the equivilant of a database table, if you're coming from an RDBMS database. After adding each Object Type, you can start definig the `metafield` for each object type. A metafield is the equivilant of schema, or table columns. So let's see this process below:
 
-<img src="./images/cosmic_add_metafields.png" width="30%" alt="Cosmic JS - Add object metafields">
+<img src="./images/cosmic_add_metafields.png" width="80%" alt="Cosmic JS - Add object metafields" style="display: block; margin-left: auto; margin-right: auto;">
 
 So add the following fields to each object type:
 
@@ -297,7 +297,7 @@ cosmic add-object --type_slug "postcategories" --title "Cars" --metafields [{tit
 
 and in a similar way you can add all of your objects. For the images, it's easier to open the dashboard, and upload all of your images using the `Media` function from the left menu of Cosmic JS dashboard. For my application, each post have multiple images, and each emage has three versions. Extra small, small, and medium which will be selected based on the screnn display size. Since we are developing for PWA which is mainly for mobile devices, we will be mainly serving xm and sm images. However we asre also providing an alternate view for a desktop using the md files just in case if the app is opened from the desktop screen. We will get into more details about how to optimize images for our PWA app further down.
 
-<img src="./images/cosmic_add_images.png" width="30%" alt="Cosmic JS - Add images">
+<img src="./images/cosmic_add_images.png" width="80%" alt="Cosmic JS - Add images" style="display: block; margin-left: auto; margin-right: auto;">
 
 And we are done from the back-end side. In the next section, we will review how to consume our data using Cosmic JS API.
 
@@ -314,7 +314,7 @@ Cosmic.getObjects({type: 'posts'})
 
 We can also interact with Cosmic JS via the GraphQL api. Please read the [Cosmic JS GraphQL API](https://cosmicjs.com/docs/graphql) for the full documentations. If you like to run few queries and test this API open [GraphIql Playground](https://graphql.cosmicjs.com/) and write some GraphQL queries:
 
-<img src="./images/cosmic_graphql_view.png" width="30%" alt="Cosmic JS - GraphQL interface">
+<img src="./images/cosmic_graphql_view.png" width="80%" alt="Cosmic JS - GraphQL interface" style="display: block; margin-left: auto; margin-right: auto;">
 
 
 ## App state using Vuex, Cosmic JS, and Vue store
@@ -411,7 +411,7 @@ The rest of the code is just required to get the results and populate the `state
 
 When starting the application we will see the data loading spinner for few seconds, then we will see grid loaded with the data from the server.
 
-<img src="./images/home_loading_Nexus.png" width="50%" alt="Home page - Data is loading...">
+<img src="./images/home_loading_Nexus.png" width="30%" alt="Home page - Data is loading..." style="display: block; margin-left: auto; margin-right: auto;">
 
 We are able to achieve this by first calling `loadInitialData` from the [main.js](https://github.com/mtermoul/garage-sale/blob/master/src/main.js)
 
@@ -503,7 +503,7 @@ Each item in the `PostGrid` from the home page, will have a link to the `post` p
 
 And when we click on the `PostItem` the router will take the user to the `PostDetails` page.
 
-<img src="./images/post_details_Nexus.png" width="50%" alt="Post details page">
+<img src="./images/post_details_Nexus.png" width="30%" alt="Post details page" style="display: block; margin-left: auto; margin-right: auto;">
 
 Once we land on this page we have four major function:
 
@@ -558,7 +558,7 @@ means that this `div` will take the full width of the page if this is `xm` which
 const imgSize = this.$vuetify.breakpoint.smAndDown ? '200px' : '400px'
 ```
 
-<img src="./images/post_details_desktop.png" width="50%" alt="Post details page - desktop version">
+<img src="./images/post_details_desktop.png" width="50%" alt="Post details page - desktop version" style="display: block; margin-left: auto; margin-right: auto;">
 
 As you can see, the post details page on the desktop is only taking half width. I also included navigarion arrows (left, right, top, bottom) since there is no swipe capabilities on the desktop version. All of that logic, can implementing with Vuetify and Vue fairly easily.
 
@@ -587,7 +587,7 @@ The code above is simply selecting the right image file name based on the screen
 I think at this point we our application is ready for some testing. To check and see how the app is behaving on a mobile device, I strongly recommand using Chrome dev tool. And from there, you can use the device toolbar to change device screen size. You can also see how the app will behave with a touch screen capability. I beleive Safari has a similar feature, called `Enter Responsive Design Mode` under the development menu.
 Another useful feature that allow me to test how actual phone feels, was the xCode device simulator. I used this function, when I was troubleshooting some iPhone specific issues, and it came really handy. I beileve that xCode can be installed easily on a mac, however I am not sure about PCs! But I think that Windows OS should have similar apps or other device simulators.
 
-<img src="./images/chrome_device_mode.png" width="50%" alt="Chrome device toolbar">
+<img src="./images/chrome_device_mode.png" width="80%" alt="Chrome device toolbar" style="display: block; margin-left: auto; margin-right: auto;">
 
 I also, recommend using vue-dev-tools addon for Chrome. It will save you a lot of time debugging and seeing what's going on under the hood.
 
@@ -617,11 +617,11 @@ You can also write your own node/express server if you like to have control, but
 After all this work, the moment of the truth came when I ran application audits using Google Lighthouse from Chrome devtools. The first time I ran the audits the score were terrible and below 50%.
 This is how it looked at some point, before implementing few suggestions
 
-<img src="./images/lighthouse_scores_before.png" width="50%" alt="Lighthouse audits scores before optimizations">
+<img src="./images/lighthouse_scores_before.png" width="80%" alt="Lighthouse audits scores before optimizations" style="display: block; margin-left: auto; margin-right: auto;">
 
 After the first run, I had to go through Lighthouse scores one by one and implement all the suggestion recommended. And each time the scores were getting better and better. I have also gained more insights on how SEO, performance, PWA... are scored and how to make each one of those areas better. After many itarations I had the following score
 
-<img src="./images/lighthouse_scores_after.png" width="50%" alt="Lighthouse audits scores after optimizations">
+<img src="./images/lighthouse_scores_after.png" width="80%" alt="Lighthouse audits scores after optimizations" style="display: block; margin-left: auto; margin-right: auto;">
 
 Even though, I didn't score 100% in all categories, I felt much better and learned a lot by just implementing the changes suggested by Google.
 Is it possible to score 100% in all categories? you may ask. And the answer is yes, if you willing to spend time and implement all the recommendations.
