@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import VueResource from 'vue-resource'
-import Cosmic from '../api/cosmic'
+import Cosmic from '../api/cosmic' // used for Rest API
+import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost' // used for GraphQL API
+import gql from 'graphql-tag'
+
+const client = new ApolloClient({
+    link: new HttpLink({uri: 'https://graphql.cosmicjs.com/v1'}),
+    cache: new InMemoryCache()
+})
 
 Vue.use(Vuex)
-Vue.use(VueResource)
 
 export default new Vuex.Store({
     state: {
@@ -125,6 +130,7 @@ export default new Vuex.Store({
             commit('SET_USER_LOCATION', {city: 'Orlando', state: 'FL', postalCode: '32821'})
         },
         async fetchPosts ({commit, state}, payload) {
+            // fetch data from Cosmic JS via Rest API
             const maxRecords = 36
             let recordLimit = 3
             let skipPos = 0
@@ -159,6 +165,31 @@ export default new Vuex.Store({
                     fetchMore = false
                 }
             }
+        },
+        fetchPostsGQ ({commit, state}, payload) {
+            if (state.isDataReady) {
+                commit('SET_IS_DATA_READY', false)
+            }
+            client
+                .query({
+                    query: gql`query Posts($bucket: String, $type: String!) {
+                            objectsByType(bucket_slug: $bucket, type_slug: $type) {
+                                _id
+                                title
+                                slug
+                                metadata
+                            }
+                        }`,
+                    variables: {bucket: 'garage-sale', type: 'posts'}
+                })
+                .then(data => {
+                    commit('SET_POSTS', data.data.objectsByType)
+                    commit('SET_IS_DATA_READY', true)
+                })
+                .catch(error => {
+                    // eslint-disable-next-line
+                    console.log(error)
+                })
         }
     }
 })
