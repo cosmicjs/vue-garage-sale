@@ -27,7 +27,7 @@ Progressive Web Apps (PWA) combine the look and feel of an app with the ease of 
 One of the best parts of PWA is they are quick to build and quick to get to the market without dealing with any phone native code or app store wars.
 
 This application was mainly inspired by Offerup, Letgo, and Craigslist.
-Like Craigslist, LetGo allows you to buy and sell items locally, which means you don’t have to deal with the hassles of shipping like you would on eBay or Amazon. With 30 million users, it is more popular than OfferUp. LetGo has been featured in many commercial lately, so you may be more familiar with it as well. The only issue is that both apps are mobile apps available on both iPhone and Android platform, however there no PWA version. So let's sit back and see if we can leverage PWA, Vue.js Cosmic JS and build one.
+Like Craigslist, LetGo allows you to buy and sell items locally, which means you don’t have to deal with the hassles of shipping like you would on eBay or Amazon. With 30 million users, it is more popular than OfferUp. LetGo has been featured in many commercial lately, so you may be more familiar with it as well. The only issue is that both apps are mobile apps available on both iPhone and Android platform, however there no PWA version. So let's sit back and see if we can leverage PWA, Vue, Cosmic JS, and build one.
 
 ## Application Overview
 
@@ -75,7 +75,7 @@ Vue CLI v3.0.0-rc.9
 ❯ ESLint + Standard config
   ESLint + Prettier
 
-? Pick additional lint features: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+? Pick additional lint features: (Press <space> to select, a to toggle all, i to invert selection)
 ❯◉ Lint on save
  ◯ Lint and fix on commit
 
@@ -87,13 +87,13 @@ Vue CLI v3.0.0-rc.9
 
 ```
 
-So far, this step looks like any regular Vue app creation except the PWA selection step. Thanks to vue-cli which is a doing a lot work behind the secenes and add the service worker option which a major feature of PWAs.
+So far, this step looks like any regular Vue app creation except the PWA selection step. Thanks to vue-cli which is a doing a lot work behind the senes and add the service worker option which a major feature of PWAs.
 So let's continue and add our functions step by step.
 
-We also need to add vuetify which will be our css framework. Before using vuetify, I used Bootstrap for most of my projects, however after trying Vuetify, I was hooked since. Vuetify in my opinon offers two majore advantages:
+We also need to add Vuetify which will be our css framework. Before using Vuetify, I used Bootstrap for most of my projects, however after trying Vuetify, I was hooked since. Vuetify in my opinion offers two major advantages:
 
 * Rapid development, comparing to bootstrap
-* Easy integration with Vue js
+* Easy integration with Vue
 
 So let's add it to out project
 
@@ -107,7 +107,7 @@ vue add vue-cli-plugin-plugin
 ✔  Successfully invoked generator for plugin: vue-cli-plugin-vuetify
 ```
 
-Also notice, that I picked the `use-a-carte` option when adding Vuetify because I want to customize one of it's components, and also I don't want to import all components from Vuetify. This will keep the files smaller comparing to importing all Vutify library.
+Also notice, that I picked the `use-a-la-carte` option when adding Vuetify because I want to customize one of it's components, and also I don't want to import all components from Vuetify. This will keep the files smaller comparing to importing all Vuetify library.
 
 ## Add the app components, router, and store
 
@@ -160,7 +160,7 @@ export default new Router({
 })
 ```
 
-Note that the router we didn't import the `PostDetails.vue` component at the begining. This is lazy loading, which means that our app would not load this component at the start to make it faster and only load this component once the user needs it.
+Note that the router we didn't import the `PostDetails.vue` component at the beginning. This is lazy loading, which means that our app would not load this component at the start to make it faster and only load this component once the user needs it.
 And let's edit the main.js and the App.vue as the following:
 
 
@@ -230,12 +230,12 @@ Before moving any further we need some data to test and build our UI components.
 
 ## Building the backend with Cosmic JS
 
-Before discovering Cosmic JS, I use to use either plain JSON files and write a little Node.js application that have a bunch of Rest API endpoints. Another alternative is using some cloud noSQL database to host the JSON data documents and write a server Rest API to serve that data. However all that is gone, after learining that with Cosmic JS, you no longer have to write server side API. Just design your data, insert or import from JSON files, and the Cosmic JS will generate the Rest API automatically for you. As a metter affect Cosmic JS, offers two kind of API end points:
+Before discovering Cosmic JS, I use to use either plain JSON files and write a little Node.js application that have a bunch of Rest API endpoints. Another alternative is using some cloud noSQL database to host the JSON data documents and write a server Rest API to serve that data. However all that is gone, after learning that with Cosmic JS, you no longer have to write server side API. Just design your data, insert or import from JSON files, and the Cosmic JS will generate the Rest API automatically for you. As a matter affect Cosmic JS, offers two kind of API end points:
 * Rest API which will be CRUD methods for adding, displaying, and updating your data.
-* GraphQL API, which is also similar to Rest, but you can write your queries using special Syntax called GraphQL. If your no familliar with GraphQL, I encourage you to review the documents. It's has been gaining a lot momentum lately due to it's flexibilites and popularity. Plus it was developed by Facebook.
+* GraphQL API, which is also similar to Rest, but you can write your queries using special Syntax called GraphQL. If your no familiar with GraphQL, I encourage you to review the documents. It's has been gaining a lot momentum lately due to it's flexibilities and popularity. Plus it was developed by Facebook.
 For my application I will include both Rest, and GraphQL methods to let you experiment and decide which one works best for you. If you are not using Cosmic JS, then you have to write your own server GraphQL API using some database as a storage mechanism, and Node.js for the GraphQL endpoints.
 
-OK, let's jump in to Cosmic JS and add our data elements. aftrer you sign up for free account, open the dashboard and add new bucket called `garage-sale`.
+OK, let's jump in to Cosmic JS and add our data elements. after you sign up for free account, open the dashboard and add new bucket called `garage-sale`.
 
 <img src="./images/cosmic_add_bucket.png" width="50%" alt="Cosmic JS - Add new bucket" style="display: block; margin-left: auto; margin-right: auto;">
 
@@ -247,7 +247,7 @@ After that open the dashboard for this bucket and from the left side menu, add t
 * PostConditions
 * PostCategories
 
-Object Type is the equivilant of a database table, if you're coming from an RDBMS database. After adding each Object Type, you can start definig the `metafield` for each object type. A metafield is the equivilant of schema, or table columns. So let's see this process below:
+Object Type is the equivalent of a database table, if you're coming from an RDBMS database. After adding each Object Type, you can start defining the `metafield` for each object type. A metafield is the equivalent of schema, or table columns. So let's see this process below:
 
 <img src="./images/cosmic_add_metafields.png" width="80%" alt="Cosmic JS - Add object metafields" style="display: block; margin-left: auto; margin-right: auto;">
 
@@ -286,7 +286,7 @@ desc: text
 name: text
 ```
 
-After adding the `Object Type` and `metafields`, it's time to add some data. For adding data just click on the object type from Cosmic JS dashboard left menu, and start adding data. You can also insert data using Cosmic JS CLI API. Please review the documentation for the CLI functions. I personally used both the dashboard and the CLI to insert the test data for my applcation. Here is an example of how you would add data to the post categories object type:
+After adding the `Object Type` and `metafields`, it's time to add some data. For adding data just click on the object type from Cosmic JS dashboard left menu, and start adding data. You can also insert data using Cosmic JS CLI API. Please review the documentation for the CLI functions. I personally used both the dashboard and the CLI to insert the test data for my application. Here is an example of how you would add data to the post categories object type:
 
 
 ```
@@ -295,7 +295,7 @@ cosmic add-object --type_slug "postcategories" --title "Shoes" --metafields [{ti
 cosmic add-object --type_slug "postcategories" --title "Cars" --metafields [{title: "name", value: "Cars"}]
 ```
 
-and in a similar way you can add all of your objects. For the images, it's easier to open the dashboard, and upload all of your images using the `Media` function from the left menu of Cosmic JS dashboard. For my application, each post have multiple images, and each emage has three versions. Extra small, small, and medium which will be selected based on the screnn display size. Since we are developing for PWA which is mainly for mobile devices, we will be mainly serving xm and sm images. However we asre also providing an alternate view for a desktop using the md files just in case if the app is opened from the desktop screen. We will get into more details about how to optimize images for our PWA app further down.
+and in a similar way you can add all of your objects. For the images, it's easier to open the dashboard, and upload all of your images using the `Media` function from the left menu of Cosmic JS dashboard. For my application, each post have multiple images, and each image has three versions. Extra small, small, and medium which will be selected based on the screen display size. Since we are developing for PWA which is mainly for mobile devices, we will be mainly serving xm and sm images. However we are also providing an alternate view for a desktop using the md files just in case if the app is opened from the desktop screen. We will get into more details about how to optimize images for our PWA app further down.
 
 <img src="./images/cosmic_add_images.png" width="80%" alt="Cosmic JS - Add images" style="display: block; margin-left: auto; margin-right: auto;">
 
@@ -303,8 +303,8 @@ And we are done from the back-end side. In the next section, we will review how 
 
 ## Consuming the Cosmic JS API via Rest or GraphQL
 
-As mentioend earlier, Cosmic JS offers two ways to perform a CRUD operations via API calls. Firt we can interact with data using plain old API. For the full documentation please review [Cosmic JS Rest API Docs](https://cosmicjs.github.io/rest-api-docs/#introduction)
-here are few examples:
+As mentioned earlier, Cosmic JS offers two ways to perform a CRUD operations via API calls. First we can interact with data using plain old API. For the full documentation please review [Cosmic JS Rest API Docs](https://cosmicjs.github.io/rest-api-docs/#introduction) here are few examples:
+
 
 ```
 Cosmic.getObjects({type: 'postcategories', limit: 10})
@@ -312,14 +312,14 @@ Cosmic.getObjects({type: 'users', skip: 5, limit: 2})
 Cosmic.getObjects({type: 'posts'})
 ```
 
-We can also interact with Cosmic JS via the GraphQL api. Please read the [Cosmic JS GraphQL API](https://cosmicjs.com/docs/graphql) for the full documentations. If you like to run few queries and test this API open [GraphIql Playground](https://graphql.cosmicjs.com/) and write some GraphQL queries:
+We can also interact with Cosmic JS via the GraphQL api. Please read the [Cosmic JS GraphQL API](https://cosmicjs.com/docs/graphql) for the full documentations. If you like to run few queries and test this API open [GraphiGL Playground](https://graphql.cosmicjs.com/) and write some GraphQL queries:
 
 <img src="./images/cosmic_graphql_view.png" width="80%" alt="Cosmic JS - GraphQL interface" style="display: block; margin-left: auto; margin-right: auto;">
 
 
 ## App state using Vuex, Cosmic JS, and Vue store
 
-In order to maintain the application state we need to persist data somewhere, and allow all components and modules within our application to share this data. So for this reason we will be using [Vuex](https://vuex.vuejs.org/). So for my app, as mentioned before I have two actions to fetch data from Cosmic JS. The first one `fetchPosts` which will simply call Cosmic JS REST api and retreive all posts. I will not dive into this since a lot of documentations has be written about this. The second method is `fetchPostsGQ` which will fetch post data from Cosmic JS GraphQL API. So let's take a look on how it is done.
+In order to maintain the application state we need to persist data somewhere, and allow all components and modules within our application to share this data. So for this reason we will be using [Vuex](https://vuex.vuejs.org/). So for my app, as mentioned before I have two actions to fetch data from Cosmic JS. The first one `fetchPosts` which will simply call Cosmic JS REST api and retrieve all posts. I will not dive into this since a lot of documentations has be written about this. The second method is `fetchPostsGQ` which will fetch post data from Cosmic JS GraphQL API. So let's take a look on how it is done.
 
 
 ```
@@ -405,7 +405,7 @@ SELECT _id, title, slug, metadata
 FROM garage-sale.posts
 ```
 
-The rest of the code is just required to get the results and populate the `state.posts` variable. I should also mention that we have `state.isDataReady` variable which will be set to `true` as soon as we have data back from the api. Otherwise the UI will show some kind of loading icon. Lastly, I would like to mention all the data needed for our UI, will be selected from `post.metadata` which is just the format of the data returned from Cosmic JS. Please take a look at [store/inex.js](https://github.com/mtermoul/garage-sale/blob/master/src/store/index.js) for the full source code of the Vuex store.
+The rest of the code is just required to get the results and populate the `state.posts` variable. I should also mention that we have `state.isDataReady` variable which will be set to `true` as soon as we have data back from the api. Otherwise the UI will show some kind of loading icon. Lastly, I would like to mention all the data needed for our UI, will be selected from `post.metadata` which is just the format of the data returned from Cosmic JS. Please take a look at [store/index.js](https://github.com/mtermoul/garage-sale/blob/master/src/store/index.js) for the full source code of the Vuex store.
 
 ## Loading initial data and populating the home page
 
@@ -512,10 +512,10 @@ Once we land on this page we have four major function:
 * Swipe left: displays the next post item
 * Swipe right: displays the previous post item
 
-Besides the swipe function, that will require a touch screen device, there are other functions like the `Contact Seller` button, and the `More Info` buttons which are straight forward. On the click of each of this buttons we show/hide a section on the view by using Vue js `v-show` and `v-bind` directives.
+Besides the swipe function, that will require a touch screen device, there are other functions like the `Contact Seller` button, and the `More Info` buttons which are straight forward. On the click of each of this buttons we show/hide a section on the view by using Vue `v-show` and `v-bind` directives.
 
-The last, peice on this puzzle, is the post details carousel which is used to browse through the images of the post item. For this project, I've used Vuetify `Carousel` component to display multiple images, and allow the user to browse through these images by using the swipe up and down actions.
-I also included in this project [/src/components/PostCarousel.vue](https://github.com/mtermoul/garage-sale/blob/master/src/components/PostCarousel.vue). This component, is an extention of `vuetify.carousel` with few tweaks. I've added the vertical swipe mode to allow the user to browse through images. Out of the box `vuetify.carousel` will only allow left/right swiping. So if you take a look at the code you will see that this component extends the `VCarousel` component
+The last piece of this puzzle, is the post details carousel which is used to browse through the images of the post item. For this project, I've used Vuetify `Carousel` component to display multiple images, and allow the user to browse through these images by using the swipe up and down actions.
+I also included in this project [/src/components/PostCarousel.vue](https://github.com/mtermoul/garage-sale/blob/master/src/components/PostCarousel.vue). This component, is an extension of `vuetify.carousel` with few tweaks. I've added the vertical swipe mode to allow the user to browse through images. Out of the box `vuetify.carousel` will only allow left/right swiping. So if you take a look at the code you will see that this component extends the `VCarousel` component
 
 
 ```
@@ -534,11 +534,11 @@ export default {
 </script>
 ```
 
-So, there you have it! this is how you use component inheritence, and extend third party components in it's most basic ways.
+So, there you have it! this is how you use component inheritance, and extend third party components in it's most basic ways.
 
-## How abou the desktop view?
+## How about the desktop view?
 
-Even though this app is built mainly for mobile devices, adding just few lines of code will surely make it desktop friendly as well. So as a part Vuetify you can write responsive web apps easily using the grid layout system. For exapmle:
+Even though this app is built mainly for mobile devices, adding just few lines of code will surely make it desktop friendly as well. So as a part Vuetify you can write responsive web apps easily using the grid layout system. For example:
 
 
 ```
@@ -547,7 +547,7 @@ Even though this app is built mainly for mobile devices, adding just few lines o
 <v-flex>
 ```
 
-means that this `div` will take the full width of the page if this is `xm` which means extra small device. and it will take half of the width for small size screen or larger. Knowing that each screen has about 12 columns in total. There is also another feature of Vuetify that will allow us to query screen size and issue conditional statements or apply conditional styling. It's called `breakpoint` and can be used as the following:
+This, means that this `div` will take the full width of the page if this is `xm` which means extra small device. and it will take half of the width for small size screen or larger. Knowing that each screen has about 12 columns in total. There is also another feature of Vuetify that will allow us to query screen size and issue conditional statements or apply conditional styling. It's called `breakpoint` and can be used as the following:
 
 
 ```
@@ -560,17 +560,17 @@ const imgSize = this.$vuetify.breakpoint.smAndDown ? '200px' : '400px'
 
 <img src="./images/post_details_desktop.png" width="50%" alt="Post details page - desktop version" style="display: block; margin-left: auto; margin-right: auto;">
 
-As you can see, the post details page on the desktop is only taking half width. I also included navigarion arrows (left, right, top, bottom) since there is no swipe capabilities on the desktop version. All of that logic, can implementing with Vuetify and Vue fairly easily.
+As you can see, the post details page on the desktop is only taking half width. I also included navigation arrows (left, right, top, bottom) since there is no swipe capabilities on the desktop version. All of that logic, can implementing with Vuetify and Vue fairly easily.
 
-One more thing is worth mentioning is that the post images resulotion will change based on screen size. So for each image there are three resolutions xm, sm, and md. And there is logic to show the appropriate image based on the screen size. Let's see ho did we acheive that.
+One more thing is worth mentioning is that the post images resolution will change based on screen size. So for each image there are three resolutions xm, sm, and md. And there is logic to show the appropriate image based on the screen size. Let's see ho did we acheive that.
 
-First all post images need to be optimized for PWA, and produce three files for each image. For instace if a post has an image named `adidas-yeezy-color-fashion-1280064.jpg` then we will need to produce three version of this image as below:
+First all post images need to be optimized for PWA, and produce three files for each image. For instance if a post has an image named `adidas-yeezy-color-fashion-1280064.jpg` then we will need to produce three version of this image as below:
 
 * adidas-yeezy-color-fashion-1280064-xs_1x.jpg
 * adidas-yeezy-color-fashion-1280064-sm_1x.jpg
 * adidas-yeezy-color-fashion-1280064-md_1x.jpg
 
-There are many ways, applications, tools and websites that you can use to optimize images and automate the process. In the next section, I will explain more about this process and PWA optimization. However in this section, I just wated to show you how to conditionally change the UI, and display different images based on screen size
+There are many ways, applications, tools and websites that you can use to optimize images and automate the process. In the next section, I will explain more about this process and PWA optimization. However in this section, I just wanted to show you how to conditionally change the UI, and display different images based on screen size
 
 
 ```
@@ -584,8 +584,8 @@ The code above is simply selecting the right image file name based on the screen
 
 ## Time to run the app and test it
 
-I think at this point we our application is ready for some testing. To check and see how the app is behaving on a mobile device, I strongly recommand using Chrome dev tool. And from there, you can use the device toolbar to change device screen size. You can also see how the app will behave with a touch screen capability. I beleive Safari has a similar feature, called `Enter Responsive Design Mode` under the development menu.
-Another useful feature that allow me to test how actual phone feels, was the xCode device simulator. I used this function, when I was troubleshooting some iPhone specific issues, and it came really handy. I beileve that xCode can be installed easily on a mac, however I am not sure about PCs! But I think that Windows OS should have similar apps or other device simulators.
+I think at this point we our application is ready for some testing. To check and see how the app is behaving on a mobile device, I strongly recommend using Chrome dev tool. And from there, you can use the device toolbar to change device screen size. You can also see how the app will behave with a touch screen capability. I believe Safari has a similar feature, called `Enter Responsive Design Mode` under the development menu.
+Another useful feature that allow me to test how actual phone feels, was the xCode device simulator. I used this function, when I was troubleshooting some iPhone specific issues, and it came really handy. I believe that xCode can be installed easily on a mac, however I am not sure about PCs! But I think that Windows OS should have similar apps or other device simulators.
 
 <img src="./images/chrome_device_mode.png" width="80%" alt="Chrome device toolbar" style="display: block; margin-left: auto; margin-right: auto;">
 
@@ -614,23 +614,23 @@ You can also write your own node/express server if you like to have control, but
 
 ## Optimizing PWA application with Google Lighthouse
 
-After all this work, the moment of the truth came when I ran application audits using Google Lighthouse from Chrome devtools. The first time I ran the audits the score were terrible and below 50%.
+After all this work, the moment of the truth came when I ran application audits using Google Lighthouse from Chrome dev-tools. The first time I ran the audits the score were terrible and below 50%.
 This is how it looked at some point, before implementing few suggestions
 
 <img src="./images/lighthouse_scores_before.png" width="80%" alt="Lighthouse audits scores before optimizations" style="display: block; margin-left: auto; margin-right: auto;">
 
-After the first run, I had to go through Lighthouse scores one by one and implement all the suggestion recommended. And each time the scores were getting better and better. I have also gained more insights on how SEO, performance, PWA... are scored and how to make each one of those areas better. After many itarations I had the following score
+After the first run, I had to go through Lighthouse scores one by one and implement all the suggestion recommended. And each time the scores were getting better and better. I have also gained more insights on how SEO, performance, PWA... are scored and how to make each one of those areas better. After many iterations I had the following score
 
 <img src="./images/lighthouse_scores_after.png" width="80%" alt="Lighthouse audits scores after optimizations" style="display: block; margin-left: auto; margin-right: auto;">
 
 Even though, I didn't score 100% in all categories, I felt much better and learned a lot by just implementing the changes suggested by Google.
 Is it possible to score 100% in all categories? you may ask. And the answer is yes, if you willing to spend time and implement all the recommendations.
 
-One major problem that was affecting the site performance, was the images. I realized that the images that I was serving were not mathching the screen size. So after going throuhg some suggestions, I found this article
+One major problem that was affecting the site performance, was the images. I realized that the images that I was serving were not matching the screen size. So after going through some suggestions, I found this article
 [A Guide to Responsive Images with Ready-to-Use Templates](https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433)
-Which explains the problem in details and also layout the best solution for you. So after the article above, I created a grunt process that goe through each image under a floder, and produce multiple versions.
+Which explains the problem in details and also layout the best solution for you. So after the article above, I created a grunt process that goes through each image under a folder, and produce multiple versions.
 
-I know that I didn't not go through every line of code here, however I strongly recomend for you to try the application [demo](https://www.google.com) and see how it feels. You can also check out the [code](https://github.com/mtermoul/garage-sale) and see if you have any questions.
+I know that I didn't not go through every line of code here, however I strongly recommend for you to try the application [demo](http://garage-sale.cosmicapp1.co/) and see how it feels. You can also check out the [code](https://github.com/mtermoul/garage-sale) and see if you have any questions.
 
 ## Conclusion
 
