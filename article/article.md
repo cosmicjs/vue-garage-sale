@@ -109,6 +109,55 @@ vue add vue-cli-plugin-plugin
 
 Also notice, that I picked the `use-a-la-carte` option when adding Vuetify because I want to customize one of it's components, and also I don't want to import all components from Vuetify. This will keep the files smaller comparing to importing all Vuetify library.
 
+## The app manifest
+
+In order to let mobile devices know that your app is PWA capable, you need to enter some information about your app in the `manifest.json` file. Let's take a look:
+
+
+```
+{
+  "name": "garage-sale",
+  "short_name": "garage-sale",
+  "icons": [
+    {
+      "src": "/img/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#4DBA87"
+}
+
+```
+
+You start by specifying the name of your app, and the icons that can be used for you app shortcut. As PWA application the mobile device browser will ask the user if they want to install your app once they visit your site for the first time. If yes, then a shortcut will be added to the mobile device home screen. It's also worth noting as a part of this app setup, you need to create icons with diferrent sizes that can be used for different mobile device. For me I had to define the following icons:
+
+
+```
+android-chrome-192x192.png
+android-chrome-512x512.png
+apple-touch-icon-120x120.png
+apple-touch-icon-152x152.png
+apple-touch-icon-180x180.png
+apple-touch-icon-60x60.png
+apple-touch-icon-76x76.png
+apple-touch-icon.png
+msapplication-icon-144x144.png
+mstile-150x150.png
+
+```
+
+<img src="./images/icons/android-chrome-512x512.png" width="50%" alt="Application icon" style="display: block; margin-left: auto; margin-right: auto;">
+
+
 ## Add the app components, router, and store
 
 Since the application will act as a SPA (single page app) we need to add the router. For the purpose of our application we only need two routes:
