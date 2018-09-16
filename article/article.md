@@ -155,7 +155,10 @@ mstile-150x150.png
 
 ```
 
-<img src="./images/icons/android-chrome-512x512.png" width="50%" alt="Application icon" style="display: block; margin-left: auto; margin-right: auto;">
+and this is one fo my app icons:
+
+
+<img src="../public/img/icons/android-chrome-512x512.png" width="25%" alt="Application icon" style="display: block; margin-left: auto; margin-right: auto;">
 
 
 ## Add the app components, router, and store
