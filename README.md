@@ -7,7 +7,7 @@ Progressive Web App with [Vue.js](https://vuejs.org/), [Cosmic JS](https://cosmi
 
 ### [View Demo](https://cosmicjs.com/apps/vue-garage-sale)
 
-### [Tutorial article](https://cosmicjs.com/articles/create-a-progressive-web-app-using-vue-cosmic-js-and-graphql-graphql)
+### [Tutorial article](https://cosmicjs.com/articles/create-a-progressive-web-app-using-vue-cosmic-js-and-graphql)
 
 # Libraries
 
