@@ -1,12 +1,13 @@
-# garage-sale:  Progressive Web App with Vue, Cosmic JS, and Vuetify
+# Vue Garage Sale
+Progressive Web App with Vue, Cosmic JS, and Vuetify
 
-![Garage Sale Main Screen](https://user-images.githubusercontent.com/8376035/45197009-11667580-b22d-11e8-857b-5ae1b2029f04.png)
+![Garage Sale Main Screen](https://cosmic-s3.imgix.net/df659b40-bb61-11e8-ac9f-67e4f371d8e5-garage.jpg?w=1000)
 
 # Links
 
-Demo
+### [View Demo](https://cosmicjs.com/apps/vue-garage-sale)
 
-Tutorial article
+### [Tutorial article](https://cosmicjs.com/articles/create-a-progressive-web-app-using-vue-cosmic-js-and-graphql-graphql)
 
 # Libraries
 
@@ -22,7 +23,6 @@ Tutorial article
 # Project setup
 
 ```
-
 # install dependencies
 npm install
 
@@ -44,9 +44,5 @@ npm start
 # Lints and fixes files
 npm run lint
 
-
 ```
-
-![Garage Sale Detail View on Nexus 5](https://user-images.githubusercontent.com/8376035/45199781-83de5200-b23b-11e8-9f52-7cb17d06bb70.png)
-Garage Sale detail view on Nexus 5.
 
